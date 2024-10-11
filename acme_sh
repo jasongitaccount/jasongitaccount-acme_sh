@@ -7051,7 +7051,7 @@ installOnline() { exit;
 
   _branch="$BRANCH"
   if [ -z "$_branch" ]; then
-    _branch="master"
+    _branch="main"
   fi
 
   target="$PROJECT/archive/$_branch.tar.gz"
@@ -7088,10 +7088,10 @@ _getRepoHash() {
   _get "$_hash_url" "" 30 | tr -d "\r\n" | tr '{},' '\n\n\n' | grep '"sha":' | cut -d '"' -f 4
 }
 
-_getUpgradeHash() {
+_getUpgradeHash() { exit;
   _b="$BRANCH"
   if [ -z "$_b" ]; then
-    _b="master"
+    _b="main"
   fi
   _hash=$(_getRepoHash "heads/$_b")
   if [ -z "$_hash" ]; then _hash=$(_getRepoHash "tags/$_b"); fi
